@@ -4,17 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insert Into Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <h1>Insert Into Table</h1>
-    <form action="/insert_into_table" method="post">
-        <label for="table_name">Table Name:</label>
-        <input type="text" id="table_name" name="table_name" placeholder="Enter table name">
-        <br>
-        <label for="values">Values (Format: value1,value2,value3):</label>
-        <input type="text" id="values" name="values" placeholder="Enter values">
-        <br>
-        <button type="submit">Insert Into Table</button>
-    </form>
+    <div class="container">
+        <h1>Insert Into Table</h1>
+        <form action="/insert_into_table" method="POST">
+            <label for="table_name">Table Name:</label>
+            <input type="text" id="table_name" name="table_name" placeholder="Enter table name" required>
+
+            <label for="values">Values (comma-separated):</label>
+            <input type="text" id="values" name="values" placeholder="value1, value2, value3, ..." required>
+
+            <input type="submit" value="Insert">
+        </form>
+    </div>
 </body>
 </html>
