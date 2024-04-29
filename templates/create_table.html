@@ -4,17 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Create Table</h1>
-    <form action="/create_table" method="post">
-        <label for="table_name">Table Name:</label>
-        <input type="text" id="table_name" name="table_name" placeholder="Enter table name">
-        <br>
-        <label for="columns_data">Columns (Format: column1:data_type,column2:data_type):</label>
-        <input type="text" id="columns_data" name="columns_data" placeholder="Enter column data">
-        <br>
-        <button type="submit">Create Table</button>
-    </form>
+    <div class="container">
+        <h1>Create Table</h1>
+        <form action="/create_table" method="POST">
+            <label for="table_name">Table Name:</label>
+            <input type="text" id="table_name" name="table_name" placeholder="Enter table name" required>
+
+            <label for="columns_data">Columns Data:</label>
+            <input type="text" id="columns_data" name="columns_data" placeholder="column1:data_type, column2:data_type, ..." required>
+
+            <input type="submit" value="Create">
+        </form>
+    </div>
 </body>
 </html>

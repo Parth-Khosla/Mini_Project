@@ -34,5 +34,8 @@ def show_active_database(connection):
     cursor = connection.cursor()
     cursor.execute("SELECT DATABASE()")
     active_db = cursor.fetchone()[0]
+    if not active_db:
+        active_db = "testing"  # Set default active database to "testing"
     print("Active database:", active_db)
     return active_db
+

@@ -34,12 +34,14 @@ def use_database():
         return str(e)
 
 # Route to show active database
-@app.route('/show_active_database')
+@app.route('/show_active_database', methods=['GET', 'POST'])
 def show_active_database():
     try:
-        connection = database_operations.establish_connection()
-        active_db = database_operations.show_active_database(connection)
-        # No need to close the connection
+        if request.method == 'POST':
+            active_db = request.form['active_database']
+        else:
+            connection = database_operations.establish_connection()
+            active_db = database_operations.show_active_database(connection)
         return render_template('show_active_database.html', active_db=active_db)
     except Exception as e:
         return str(e)

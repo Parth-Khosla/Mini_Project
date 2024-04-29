@@ -4,44 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Operations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        select, input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select option {
+            padding: 8px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Table Operations</h1>
-    <form method="POST">
-        <label for="selected_database">Select Database:</label>
-        <select name="selected_database" id="selected_database">
-            {% for database in databases %}
+    <div class="container">
+        <h1>Table Operations</h1>
+        <form action="/table_operations" method="POST">
+            <label for="selected_database">Select Database:</label>
+            <select id="selected_database" name="selected_database">
+                <option value="">Select...</option>
+                {% for database in databases %}
                 <option value="{{ database }}">{{ database }}</option>
-            {% endfor %}
-        </select>
+                {% endfor %}
+            </select>
 
-        <label for="selected_table">Select Table:</label>
-        <select name="selected_table" id="selected_table">
-            {% for table in tables %}
+            <label for="selected_table">Select Table:</label>
+            <select id="selected_table" name="selected_table">
+                <option value="">Select...</option>
+                {% for table in tables %}
                 <option value="{{ table }}">{{ table }}</option>
-            {% endfor %}
-        </select>
-        <button type="submit">Select</button>
-    </form>
+                {% endfor %}
+            </select>
 
-    <h2>Tables in Selected Database:</h2>
-    <ul>
-        {% if tables %}
-            {% for table in tables %}
-                <li>{{ table }}</li>
-            {% endfor %}
-        {% else %}
-            <li>No tables found.</li>
-        {% endif %}
-    </ul>
-
-    <ul>
-        <li><a href="/create_table">Create Table</a></li>
-        <li><a href="/drop_table">Drop Table</a></li>
-        <li><a href="/show_tables">Show Tables</a></li>
-        <li><a href="/insert_into_table">Insert Into Table</a></li>
-        <li><a href="/edit_table_value">Edit Table Value</a></li>
-        <li><a href="/delete_from_table">Delete From Table</a></li>
-    </ul>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
 </body>
 </html>
