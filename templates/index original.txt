@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Operations</title>
+</head>
+<body>
+    <h1>Perform Database Operations</h1>
+    
+    <form action="/create_database" method="post">
+        <label for="create_database">Create Database:</label>
+        <input type="text" id="create_database" name="database_name" placeholder="Enter database name">
+        <button type="submit">Create</button>
+    </form>
+
+    <form action="/use_database" method="post">
+        <label for="use_database">Use Database:</label>
+        <input type="text" id="use_database" name="database_name" placeholder="Enter database name">
+        <button type="submit">Use</button>
+    </form>
+
+    <form action="/fetch_databases">
+        <button type="submit">Fetch Databases</button>
+    </form>
+
+    <form action="/show_active_database">
+        <button type="submit">Show Active Database</button>
+    </form>
+</body>
+</html>

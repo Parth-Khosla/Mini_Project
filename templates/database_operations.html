@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Operations</title>
+</head>
+<body>
+    <h1>Database Operations</h1>
+
+    <h2>Fetch Databases</h2>
+    <ul>
+        {% for database in databases %}
+            <li>{{ database }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Create Database</h2>
+    <form action="/create_database" method="POST">
+        <label for="database_name">Database Name:</label>
+        <input type="text" id="database_name" name="database_name">
+        <button type="submit">Create Database</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            // Fetch Databases
+            $("#fetch-databases-btn").click(function() {
+                $.get("/fetch_databases", function(data) {
+                    $("#databases-list").html(data);
+                });
+            });
+
+            // Create Database
+            $("#create-database-form").submit(function(event) {
+                event.preventDefault();
+                var databaseName = $("#database-name").val();
+                $.post("/create_database", {database_name: databaseName}, function(data) {
+                    alert(data.message);
+                });
+            });
+
+            // Other database operations
+        });
+    </script>
+</body>
+</html>
